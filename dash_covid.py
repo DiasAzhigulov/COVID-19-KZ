@@ -1,4 +1,3 @@
-import pandas_datareader.data as web
 import datetime
 import dash
 from dash.dependencies import Input, Output
@@ -8,6 +7,45 @@ import dash_html_components as html
 import pandas as pd
 import plotly.graph_objs as go
 import numpy as np
+
+from urllib.request import urlopen as uReq
+from bs4 import BeautifulSoup as soup
+import time
+import atexit
+
+from apscheduler.schedulers.background import BackgroundScheduler
+
+url = "https://www.coronavirus2020.kz/"
+def parse_data():
+	uClient = uReq(url)
+	page_html = uClient.read()
+	uClient.close()
+
+	page_soup = soup(page_html, "html.parser")
+
+	containers = page_soup.findAll("div", {"class":"city_cov"})
+
+	out_filename = "covid_cases.csv"
+	headers = "city, number_of_cases \n"
+
+	f = open(out_filename, "w")
+	f.write(headers)
+
+
+	for container in containers[:1]:
+		in_contaners = container.stripped_strings
+		for it in in_contaners:
+			it = it.replace(" ", "")
+			print(it)
+			f.write(it.replace("–", ",")+"\n")
+	f.close()
+
+scheduler = BackgroundScheduler()
+scheduler.add_job(func=parse_data, trigger="interval", seconds=3)
+scheduler.start()
+
+# Shut down the scheduler when exiting the app
+atexit.register(lambda: scheduler.shutdown())
 
 app = dash.Dash('COVID-19 Graphs')
 
@@ -154,6 +192,8 @@ for css in external_css:
 external_js = ['https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js']
 for js in external_css:
     app.scripts.append_script({'external_url': js})
+
+
 
 
 if __name__ == '__main__':
