@@ -14,7 +14,14 @@ import time
 import atexit
 
 from apscheduler.schedulers.background import BackgroundScheduler
+from transliterate import translit, get_available_language_codes
 
+def choose_city(city_name):
+    df_covid = pd.read_csv("covid_cases.csv")
+    df = pd.read_csv("population_size.csv")
+    df = df.merge(df_covid)
+    return df[df['city'] == city_name].values[0][1], df[df['city'] == "g.Nur-Sultan"].values[0][2]
+    
 url = "https://www.coronavirus2020.kz/"
 def parse_data():
 	uClient = uReq(url)
@@ -36,7 +43,9 @@ def parse_data():
 		in_contaners = container.stripped_strings
 		for it in in_contaners:
 			it = it.replace(" ", "")
-			print(it)
+			# print(it)
+		 	# print(translit(it, 'ru', reversed=True))
+			it = translit(it, 'ru', reversed=True)
 			f.write(it.replace("–", ",")+"\n")
 	f.close()
 
