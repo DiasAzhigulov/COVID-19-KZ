@@ -204,6 +204,10 @@ def update_fatality(val,data_names):
     graphs = []
 
     try:
+        if len(data_names)>1:
+            class_choice = 'col s12 m6 l6'
+        else:
+            class_choice = 'col s12'
         for data_name in data_names:
             data = go.Scatter(
                 x=data_dict[data_name].x,
@@ -219,7 +223,7 @@ def update_fatality(val,data_names):
                                                             yaxis={'title':'Probability'},
                                                             #margin={'l':500,'r':1,'t':45,'b':1},
                                                             title='{}'.format(data_name))}
-                ), className='col s12 m6 l6'))
+                ), className=class_choice))
 
         return graphs
     except:
