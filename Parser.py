@@ -27,8 +27,28 @@ def parse_data():
 		in_contaners = container.stripped_strings
 		for it in in_contaners:
 			it = it.replace(" ", "")
-			# print(it)
+			print(it)
 			# print(translit(it, 'ru', reversed=True))
 			it = translit(it, 'ru', reversed=True)
 			f.write(it.replace("–", ",")+"\n")
 	f.close()
+
+
+	out_filename = "covid_fatal_cases.csv"
+	headers = "city, number_of_fatal_cases \n"
+	f = open(out_filename, "w")
+	f.write(headers)
+
+	for container in containers[-1:]:
+		in_contaners = container.stripped_strings
+		for it in in_contaners:
+			it = it.replace(" ", "")
+			print(it)
+			# print(translit(it, 'ru', reversed=True))
+			it = translit(it, 'ru', reversed=True)
+			f.write(it.replace("–", ",")+"\n")
+	f.close()
+
+
+# if __name__== '__main__':
+# 	parse_data()
