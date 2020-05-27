@@ -1,0 +1,19 @@
+city,population,number_of_cases,number_of_fatal_cases
+Nur-Sultan,1078384,1686,5.0
+Almaty,1854656,2276,10.0
+Shymkent,1011511,675,6.0
+Akmola region,715000,147,4.0
+Aktobe region,797036,278,0.0
+Almaty region,1950000,300,0.0
+Atyrau region,556388,923,0.0
+East Kazakhstan region,1379000,66,1.0
+Zhambyl region,1072000,343,1.0
+West Kazakhstan region,618261,452,0.0
+Karagandy region,1379000,662,3.0
+Kostanay region,882961,127,1.0
+Kyzylorda region,799533,297,0.0
+Mangystau region,569706,172,1.0
+Pavlodar region,754739,187,2.0
+North Kazakhstan region,579403,46,0.0
+Turkistan region,1983967,332,1.0
+Enter your own city,1000000,0,0.0
