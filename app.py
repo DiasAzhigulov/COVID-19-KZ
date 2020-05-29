@@ -39,7 +39,7 @@ app.layout = html.Div([
 
     #First task
     html.Div([
-        html.H2('COVID-19 risk calculator for Kazakhstan and the world',
+        html.H2('COVID-19 risk calculator for Kazakhstan',
                 style={'position':'relative','text-align':'center','top':'50%','transform':'translate(0%,-50%)','font-size':30,'color':'rgb(255,255,255)'
                        }),
         ],style={'background-color':'#0C4142','margin-left':'0%','margin-right':'0%','margin-top':'0%','height':'10%'}),
@@ -68,14 +68,18 @@ app.layout = html.Div([
     html.Div([html.H5(['Select your community size (range):']),dcc.RangeSlider(
                 id='slider',
                 min=0,
-                max=2000,
+                max=1000,
                 step=10,
                 marks={
                     0: '0',
+                    100: '100',
+                    200: '200',
+                    300: '300',
+                    400: '400',
                     500: '500',
                     1000: '1000',
-                    1500: '1500',
-                    2000: '2000',
+                    # 1500: '1500',
+                    # 2000: '2000',
                     #5000: '5000',
                     #6000: '6000',
                     #7000: '7000',
@@ -131,7 +135,7 @@ app.layout = html.Div([
 
                         #html.P(["Number of fatal cases"],style={'position':'absolute','top':'29%','left':15,'fontWeight':'bold'}),
                         html.Div(children=[
-                            html.P(["Number of fatal cases"], style={'fontWeight':'bold'}),
+                            html.P(["Number of fatalities"], style={'fontWeight':'bold'}),
                             dcc.Input(id="input-death", type="number", placeholder="Total death today", value=''),
                             ], style={'margin-left':10,'margin-top':'5%'}),
 
@@ -155,12 +159,12 @@ app.layout = html.Div([
     ], style={'position':'relative','margin-top':50}),
 
 
-    html.Div([html.H4('Interpretation of the estimates [1]:', style={'fontWeight':'bold'})], style={'margin-top':50,'margin-left':10,'margin-right':10}),
-    html.Div([html.Ul([html.Li('0-25%: Relatively safe. However, keep social distancing principle and wear mask;'),
-                    html.Li('25-50%: Relatively serious. It is very important to wear masks and gloves;'),
-                    html.Li('50-75%: Risky. Make sure you wear masks, gloves, eye protectors. Avoid any touches;'),
-                    html.Li('>75%: Very risky. Unless there is absolute need to go out, stay at home. Use all of the possible protective means. Avoid any contact.')],
-                    style={'list-style-type':'disc','font-size':16})], style={'margin-left':10,'margin-right':10}),
+    html.Div([html.H4('Please refer to [1] for interpretation of the probability estimates', style={'fontWeight':'bold'})], style={'margin-top':50,'margin-left':10,'margin-right':10}),
+    # html.Div([html.Ul([html.Li('0-25%: Relatively safe. However, keep social distancing principle and wear mask;'),
+    #                 html.Li('25-50%: Relatively serious. It is very important to wear masks and gloves;'),
+    #                 html.Li('50-75%: Risky. Make sure you wear masks, gloves, eye protectors. Avoid any touches;'),
+    #                 html.Li('>75%: Very risky. Unless there is absolute need to go out, stay at home. Use all of the possible protective means. Avoid any contact.')],
+    #                 style={'list-style-type':'disc','font-size':16})], style={'margin-left':10,'margin-right':10}),
 
     html.Div([html.H4('References', style={'fontWeight':'bold'})], style={'margin-left':10,'margin-right':10}),
     html.Div(['[1] ',dcc.Link('zihengsun.github.io/covid.html',href='https://zihengsun.github.io/covid.html',target='_blank')], style={'font-size':16,'margin-left':10,'margin-right':10}),
