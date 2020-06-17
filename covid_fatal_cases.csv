@@ -1,14 +1,15 @@
 city, number_of_fatal_cases 
-g.Nur-Sultan,9
-g.Almaty,10
-g.Shymkent,10
-Akmolinskajaoblast',4
-Atyrauskajaoblast',2
+g.Nur-Sultan,21
+g.Almaty,15
+g.Shymkent,12
+Akmolinskajaoblast',6
+Aktjubinskajaoblast',1
+Atyrauskajaoblast',3
 Vostochno-Kazahstanskajaoblast',1
 Zhambylskajaoblast',1
-Zapadno-Kazahstanskajaoblast',1
-Karagandinskajaoblast',5
+Zapadno-Kazahstanskajaoblast',6
+Karagandinskajaoblast',9
 Kostanajskajaoblast',2
-Mangistauskajaoblast',1
-Pavlodarskajaoblast',5
-Turkestanskajaoblast',1
+Mangistauskajaoblast',2
+Pavlodarskajaoblast',13
+Turkestanskajaoblast',5
