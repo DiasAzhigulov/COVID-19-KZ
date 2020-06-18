@@ -163,6 +163,10 @@ app.layout = html.Div([
     ], style={'position':'relative','margin-top':50}),
 
 
+    html.Div([html.H4('Basic Reproduction Number (for Kazakhstan only)', style={'fontWeight':'bold'})], style={'margin-left':10,'margin-right':10}),
+    html.Div(['R0 = ' + str(round(be.getR0(),4))], style={'font-size':16,'margin-left':10,'margin-right':10}),
+
+    
     html.Div([html.H4('Please refer to [1] for interpretation of the probability estimates', style={'fontWeight':'bold'})], style={'margin-top':50,'margin-left':10,'margin-right':10}),
     # html.Div([html.Ul([html.Li('0-25%: Relatively safe. However, keep social distancing principle and wear mask;'),
     #                 html.Li('25-50%: Relatively serious. It is very important to wear masks and gloves;'),

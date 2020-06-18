@@ -95,3 +95,9 @@ def getIndexes(dfObj, value):
             listOfPos.append(row)
         # Return a list of tuples indicating the positions of value in the dataframe
         return listOfPos
+
+def getR0(alpha=1.6e-2, beta=1.127, delta=0.6788, gamma=0.7002):
+    t = 36 #number of days
+    R0 = beta*((1-alpha)**t)/delta
+
+    return R0
