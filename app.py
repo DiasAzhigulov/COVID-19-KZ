@@ -9,7 +9,7 @@ from apscheduler.schedulers.background import BackgroundScheduler
 import atexit
 
 scheduler_parser = BackgroundScheduler()
-scheduler_parser.add_job(func=pr.parse_data, trigger="interval", seconds=4)
+scheduler_parser.add_job(func=pr.parse_data, trigger="interval", seconds=3)
 scheduler_parser.start()
 # Shut down the scheduler when exiting the app
 atexit.register(lambda: scheduler_parser.shutdown())
@@ -23,11 +23,12 @@ external_stylesheets = ['https://codepen.io/amyoshino/pen/jzXypZ.css']
 def load_data():
     global df
     df = pd.read_csv("out.csv", sep="\n")
+    # print(df)
 
 
 load_data()
 scheduler_loader = BackgroundScheduler()
-scheduler_loader.add_job(func=load_data, trigger="interval", seconds=3)
+scheduler_loader.add_job(func=load_data, trigger="interval", seconds=4)
 scheduler_loader.start()
 atexit.register(lambda: scheduler_loader.shutdown())
 
@@ -189,6 +190,12 @@ app.layout = html.Div([
     style={'width':'100%','height':'100%','position': 'absolute', 'top': 0, 'left': 0,'max-width':50000}
     )
 
+# @app.callback([dash.dependencies.Output('city-dropdown', 'value')],
+#             [dash.dependencies.Input('city-dropdown')])
+
+# def update_dropdown():
+#     load_data()
+#     return df
 
 @app.callback(
     [dash.dependencies.Output('input-population-birtday', 'value'),
